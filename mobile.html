@@ -8,48 +8,109 @@
   <meta name="theme-color" content="#001122" />
   <style>
     :root {
-      --c-bg: #001122;
-      --c-bg-2: #031a33;
-      --c-primary: #00D4FF;
-      --c-accent: #00FF88;
-      --c-purple: #BB00FF;
-      --c-text: #ffffff;
-      --c-text-2: #cfcfcf;
-      --radius: 14px;
-      --shadow: 0 6px 24px rgba(0,212,255,0.18);
-      --gap: 14px;
-      --fast: .2s;
+      /* 继承桌面版赛博朋克配色 */
+      --cyber-blue-primary: #00D4FF;
+      --cyber-blue-secondary: #0099CC;
+      --cyber-dark-primary: #001122;
+      --cyber-dark-secondary: #003366;
+      --cyber-neon-green: #00FF88;
+      --cyber-neon-purple: #BB00FF;
+      --cyber-text-primary: #FFFFFF;
+      --cyber-text-secondary: #CCCCCC;
+      --cyber-bg-gradient: linear-gradient(135deg, var(--cyber-dark-primary) 0%, var(--cyber-dark-secondary) 100%);
+      --border-cyber: 2px solid var(--cyber-blue-primary);
+      --shadow-neon: 0 0 8px var(--cyber-blue-primary), 0 0 16px rgba(0,212,255,0.25);
+      --font-mono: 'Courier New', 'Monaco', 'Menlo', monospace;
+      --radius: 10px;
+      --gap: 10px;
+      --fast: .18s;
+      --base: 13px;
+      /* 晚霞渐变 */
+      --sunset-angle: 135deg;
+      --sunset-start: #ff7eb3;
+      --sunset-mid: #a066ff;
+      --sunset-end: #6a11cb;
     }
     html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
     body {
-      margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Helvetica, Arial, "Segoe UI Emoji";
-      background: linear-gradient(135deg, var(--c-bg) 0%, var(--c-bg-2) 100%);
-      color: var(--c-text); line-height: 1.5; -webkit-font-smoothing: antialiased; min-height: 100svh;
+      margin: 0; font-family: var(--font-mono); font-size: var(--base);
+      background: var(--cyber-bg-gradient);
+      color: var(--cyber-text-primary); line-height: 1.55; -webkit-font-smoothing: antialiased; min-height: 100svh;
     }
-    .page { max-width: 720px; margin: 0 auto; padding: 16px; }
-    .hdr { display: flex; align-items: center; gap: 12px; padding: 12px 10px; border-radius: var(--radius); background: rgba(3,26,51,.6); border: 1px solid rgba(0,212,255,.25); box-shadow: var(--shadow); }
-    .logo { font-weight: 800; font-size: 20px; color: var(--c-primary); letter-spacing: .5px; }
-    .badge { margin-left: auto; font-size: 12px; color: var(--c-accent); padding: 4px 8px; border: 1px solid var(--c-accent); border-radius: 999px; }
-    .sec { margin-top: 16px; border-radius: var(--radius); background: rgba(3,26,51,.6); border: 1px solid rgba(0,212,255,.2); box-shadow: var(--shadow); overflow: hidden; }
-    .sec-hd { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-bottom: 1px solid rgba(0,212,255,.12); font-weight: 700; color: var(--c-primary); text-transform: uppercase; letter-spacing: .6px; }
-    .sec-bd { padding: 12px 14px; }
+    .page { max-width: 560px; margin: 0 auto; padding: 12px; }
+
+    /* 头部与品牌 */
+    .hdr { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; background: rgba(0,17,34,0.75); border: var(--border-cyber); box-shadow: var(--shadow-neon); }
+    .logo { font-weight: 800; font-size: clamp(16px, 5vw, 20px); color: var(--cyber-blue-primary); letter-spacing: 2px; text-shadow: 0 0 8px var(--cyber-blue-primary); }
+    .badge { margin-left: auto; font-size: 11px; color: var(--cyber-neon-green); padding: 4px 8px; border: 1px solid var(--cyber-neon-green); border-radius: 999px; background: rgba(0,255,136,.08); }
+
+    /* 卡片容器，贴近桌面风格 */
+    .sec { margin-top: 12px; border-radius: 12px; background: rgba(0,17,34,0.8); border: var(--border-cyber); box-shadow: var(--shadow-neon); overflow: hidden; }
+    .sec-hd { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--cyber-blue-secondary); font-weight: 800; color: var(--cyber-blue-primary); text-transform: uppercase; letter-spacing: 1px; }
+    .sec-bd { padding: 10px 12px; }
+
+    /* 统计/列表更紧凑 */
     .kvs { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); }
-    .kv { background: rgba(0,0,0,.16); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 10px; text-align: center; }
-    .kv-v { font-size: 20px; font-weight: 800; color: var(--c-accent); }
-    .kv-k { font-size: 12px; color: var(--c-text-2); text-transform: uppercase; letter-spacing: .6px; }
-    .list { display: grid; gap: 10px; }
-    .item { display: flex; align-items: center; gap: 10px; padding: 10px; background: rgba(0,0,0,.16); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; }
-    .item a { color: var(--c-text); text-decoration: none; }
-    .item a:active { opacity: .8; }
-    .btns { display: flex; gap: 10px; }
-    .btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; border-radius: 10px; border: 1px solid var(--c-primary); color: var(--c-primary); background: transparent; }
-    .btn--fill { background: linear-gradient(45deg, var(--c-bg-2), rgba(0,212,255,.2)); color: var(--c-text); border-color: rgba(0,212,255,.35); }
-    .muted { color: var(--c-text-2); font-size: 12px; }
+    .kv { background: rgba(0, 51, 102, 0.25); border: 1px solid var(--cyber-blue-secondary); border-radius: 8px; padding: 8px; text-align: center; }
+    .kv-v { font-size: clamp(16px, 5vw, 18px); font-weight: 900; color: var(--cyber-neon-green); text-shadow: 0 0 6px rgba(0,255,136,.4); }
+    .kv-k { font-size: 11px; color: var(--cyber-text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+
+    .list { display: grid; gap: 8px; }
+    .item { display: flex; align-items: center; gap: 8px; padding: 10px; background: rgba(0, 51, 102, 0.25); border: 1px solid var(--cyber-blue-secondary); border-radius: 8px; }
+    .item a { color: var(--cyber-text-primary); text-decoration: none; }
+    .item a:active { opacity: .85; }
+
+    /* 图像卡片 */
     .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
-    .imgcard { background: rgba(0,0,0,.16); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; overflow: hidden; }
+    .imgcard { background: rgba(0, 17, 34, 0.8); border: 1px solid var(--cyber-blue-secondary); border-radius: 10px; overflow: hidden; }
     .imgcard img { width: 100%; height: auto; display: block; }
-    .nav { position: sticky; bottom: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .switch { height: 44px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: rgba(0,0,0,.24); border: 1px solid rgba(255,255,255,.18); color: var(--c-text); }
+
+    /* 按钮风格接近桌面 */
+    .btns { display: flex; gap: 10px; }
+    .btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; border-radius: 20px; border: 1px solid var(--cyber-blue-primary); color: var(--cyber-text-primary); background: linear-gradient(45deg, var(--cyber-dark-secondary), rgba(0,212,255,.18)); box-shadow: 0 0 10px rgba(0,212,255,.25); transition: transform var(--fast) ease; }
+    .btn:active { transform: scale(0.98); }
+    .btn--outline { background: rgba(0,17,34,.8); color: var(--cyber-blue-primary); border-color: var(--cyber-blue-primary); }
+
+    .muted { color: var(--cyber-text-secondary); font-size: 11px; }
+
+    /* 底部切换 */
+    .nav { position: sticky; bottom: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .switch { height: 40px; border-radius: 20px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: rgba(0,17,34,.8); border: 1px solid var(--cyber-blue-secondary); color: var(--cyber-text-primary); text-decoration: none; }
+
+    /* 降低动画，贴近移动性能 */
+    @media (prefers-reduced-motion: reduce) {
+      .btn { transition: none; }
+    }
+
+    /* 简约线条联系样式 */
+    .contact-lines { margin: 2px 0; }
+    .line-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 2px; border-bottom: 1px solid rgba(0,212,255,0.25); }
+    .line-item:first-child { border-top: 1px solid rgba(0,212,255,0.25); }
+    .line-left { display: flex; align-items: center; gap: 10px; }
+    .line-k { color: var(--cyber-text-secondary); font-size: 11px; letter-spacing: .5px; text-transform: uppercase; }
+    .line-v { color: var(--cyber-text-primary); }
+    .line-link { color: var(--cyber-blue-primary); text-decoration: none; }
+    .line-link:active { opacity: .85; }
+    .line-arrow { color: var(--cyber-blue-primary); font-weight: 700; }
+    .line-btn { color: var(--cyber-neon-green); text-decoration: none; }
+    .line-btn:active { opacity: .85; }
+
+    /* 轻量提示 */
+    .toast { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); background: rgba(0, 17, 34, 0.9); color: var(--cyber-text-primary); border: 1px solid var(--cyber-neon-green); padding: 8px 12px; border-radius: 999px; font-size: 12px; box-shadow: 0 0 10px rgba(0,255,136,.35); opacity: 0; pointer-events: none; transition: opacity .18s ease; }
+    .toast--show { opacity: 1; }
+
+    /* 晚霞渐变模块与滑块 */
+    .sunset-sec .sec-bd { display: grid; gap: 10px; }
+    .sunset-card { border-radius: 12px; padding: 16px; border: 1px solid rgba(255, 255, 255, 0.18); box-shadow: 0 8px 24px rgba(160,102,255,0.25); background: linear-gradient(var(--sunset-angle), var(--sunset-start) 0%, var(--sunset-mid) 50%, var(--sunset-end) 100%); }
+    .sunset-title { font-weight: 900; letter-spacing: 1px; text-shadow: 0 0 10px rgba(255, 126, 179, 0.45); }
+    .sunset-desc { margin-top: 4px; color: #fff; opacity: .85; font-size: 12px; }
+    .sunset-ctrl { display: grid; gap: 8px; }
+    .sunset-label { color: var(--cyber-text-secondary); font-size: 12px; display: flex; align-items: center; justify-content: space-between; }
+    .sunset-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 10px; border-radius: 999px; outline: none; background: linear-gradient(90deg, var(--sunset-start), var(--sunset-mid), var(--sunset-end)); border: 1px solid rgba(255,255,255,0.22); box-shadow: inset 0 0 10px rgba(255,255,255,0.15), 0 4px 14px rgba(106,17,203,0.35); }
+    .sunset-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #fff; border: 3px solid #ff7eb3; box-shadow: 0 0 0 4px rgba(255,126,179,0.25), 0 2px 8px rgba(0,0,0,0.25); cursor: pointer; }
+    .sunset-slider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #fff; border: 3px solid #ff7eb3; box-shadow: 0 0 0 4px rgba(255,126,179,0.25), 0 2px 8px rgba(0,0,0,0.25); cursor: pointer; }
+    .sunset-slider:active::-webkit-slider-thumb { transform: scale(0.98); }
+    .sunset-slider:active::-moz-range-thumb { transform: scale(0.98); }
   </style>
   <script>
     (function () {
@@ -68,6 +129,36 @@
       var url = 'index.html?forceDesktop=1';
       location.replace(url);
     }
+    function showToast(msg) {
+      var el = document.getElementById('toast');
+      if (!el) return;
+      el.textContent = msg;
+      el.classList.add('toast--show');
+      setTimeout(function(){ el.classList.remove('toast--show'); }, 1500);
+    }
+    function copyEmailMobile() {
+      var email = 'Ax@eaxcloud.net';
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email).then(function(){ showToast('已复制邮箱'); });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = email; ta.style.position='fixed'; ta.style.left='-9999px'; document.body.appendChild(ta);
+        ta.focus(); ta.select(); try { document.execCommand('copy'); showToast('已复制邮箱'); } catch(e){}
+        document.body.removeChild(ta);
+      }
+    }
+    function bindSunset() {
+      var range = document.getElementById('angleRange');
+      var val = document.getElementById('angleVal');
+      if (!range || !val) return;
+      function update() {
+        var deg = parseInt(range.value, 10) || 135;
+        document.documentElement.style.setProperty('--sunset-angle', deg + 'deg');
+        val.textContent = deg + '°';
+      }
+      range.addEventListener('input', update);
+      update();
+    }
   </script>
 </head>
 <body>
@@ -78,7 +169,7 @@
     </header>
 
     <section class="sec">
-      <div class="sec-hd">Profile</div>
+      <div class="sec-hd">╔═══ PROFILE ═══╗</div>
       <div class="sec-bd">
         <div class="list">
           <div class="item"><span>💻 Programmer</span></div>
@@ -88,8 +179,22 @@
       </div>
     </section>
 
+    <section class="sec sunset-sec">
+      <div class="sec-hd">╔═══ SUNSET ═══╗</div>
+      <div class="sec-bd">
+        <div class="sunset-card">
+          <div class="sunset-title">晚霞渐变模块</div>
+          <div class="sunset-desc">粉紫过渡的柔和渐变，可用于 Banner/按钮背景。</div>
+          <div class="sunset-ctrl" style="margin-top:10px;">
+            <label class="sunset-label">角度 <span id="angleVal">135°</span></label>
+            <input id="angleRange" class="sunset-slider" type="range" min="0" max="360" step="1" value="135">
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="sec">
-      <div class="sec-hd">Stats</div>
+      <div class="sec-hd">╔═══ STATS ═══╗</div>
       <div class="sec-bd">
         <div class="kvs">
           <div class="kv"><div class="kv-v">1337+</div><div class="kv-k">Commits</div></div>
@@ -101,7 +206,7 @@
     </section>
 
     <section class="sec">
-      <div class="sec-hd">Languages</div>
+      <div class="sec-hd">╔═══ LANGUAGES ═══╗</div>
       <div class="sec-bd">
         <div class="grid2">
           <div class="imgcard"><img loading="lazy" decoding="async" alt="GitHub Stats" src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=tokyonight&bg_color=001122&title_color=00D4FF&icon_color=00FF88&text_color=FFFFFF&border_color=0099CC"></div>
@@ -111,16 +216,34 @@
     </section>
 
     <section class="sec">
-      <div class="sec-hd">Contact</div>
+      <div class="sec-hd">╔═══ CONTACT ═══╗</div>
       <div class="sec-bd">
-        <div class="list">
-          <div class="item"><a href="https://github.com/EaxCloud" rel="noopener">GitHub @EaxCloud</a></div>
-          <div class="item"><a href="https://space.bilibili.com/303578252" rel="noopener">Bilibili @EaxCloud</a></div>
-          <div class="item"><a href="mailto:Ax@eaxcloud.net">Ax@eaxcloud.net</a></div>
+        <div class="contact-lines">
+          <div class="line-item">
+            <div class="line-left">
+              <div class="line-k">GitHub</div>
+              <a class="line-link" href="https://github.com/EaxCloud" rel="noopener">@EaxCloud</a>
+            </div>
+            <a class="line-arrow" href="https://github.com/EaxCloud" rel="noopener">→</a>
+          </div>
+          <div class="line-item">
+            <div class="line-left">
+              <div class="line-k">Bilibili</div>
+              <a class="line-link" href="https://space.bilibili.com/303578252" rel="noopener">@EaxCloud</a>
+            </div>
+            <a class="line-arrow" href="https://space.bilibili.com/303578252" rel="noopener">→</a>
+          </div>
+          <div class="line-item">
+            <div class="line-left">
+              <div class="line-k">Email</div>
+              <a class="line-link" href="mailto:Ax@eaxcloud.net" id="emailLink">Ax@eaxcloud.net</a>
+            </div>
+            <a class="line-btn" href="#" id="copyEmail">复制</a>
+          </div>
         </div>
         <div class="btns" style="margin-top: 12px;">
-          <button class="btn" onclick="location.href='mailto:Ax@eaxcloud.net'">发邮件</button>
-          <button class="btn btn--fill" onclick="backToDesktop()">查看桌面版</button>
+          <button class="btn btn--outline" onclick="location.href='mailto:Ax@eaxcloud.net'">发邮件</button>
+          <button class="btn" onclick="backToDesktop()">查看桌面版</button>
         </div>
         <p class="muted" style="margin-top:8px;">如需始终访问桌面版，请在桌面站点选择“查看桌面版”后保留设置。</p>
       </div>
@@ -131,6 +254,14 @@
       <a class="switch" href="index.html" style="text-decoration:none; align-items:center; display:inline-flex; justify-content:center;">返回主页</a>
     </nav>
   </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      var btn = document.getElementById('copyEmail');
+      if (btn) btn.addEventListener('click', function(e){ e.preventDefault(); copyEmailMobile(); });
+      bindSunset();
+    });
+  </script>
 </body>
 </html>
 

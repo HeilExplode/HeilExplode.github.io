@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>EaxCloud · 移动版</title>
+  <meta name="description" content="EaxCloud 的移动端个人主页：快速、清晰、可触控。" />
+  <meta name="theme-color" content="#001122" />
+  <style>
+    :root {
+      --c-bg: #001122;
+      --c-bg-2: #031a33;
+      --c-primary: #00D4FF;
+      --c-accent: #00FF88;
+      --c-purple: #BB00FF;
+      --c-text: #ffffff;
+      --c-text-2: #cfcfcf;
+      --radius: 14px;
+      --shadow: 0 6px 24px rgba(0,212,255,0.18);
+      --gap: 14px;
+      --fast: .2s;
+    }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    body {
+      margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Helvetica, Arial, "Segoe UI Emoji";
+      background: linear-gradient(135deg, var(--c-bg) 0%, var(--c-bg-2) 100%);
+      color: var(--c-text); line-height: 1.5; -webkit-font-smoothing: antialiased; min-height: 100svh;
+    }
+    .page { max-width: 720px; margin: 0 auto; padding: 16px; }
+    .hdr { display: flex; align-items: center; gap: 12px; padding: 12px 10px; border-radius: var(--radius); background: rgba(3,26,51,.6); border: 1px solid rgba(0,212,255,.25); box-shadow: var(--shadow); }
+    .logo { font-weight: 800; font-size: 20px; color: var(--c-primary); letter-spacing: .5px; }
+    .badge { margin-left: auto; font-size: 12px; color: var(--c-accent); padding: 4px 8px; border: 1px solid var(--c-accent); border-radius: 999px; }
+    .sec { margin-top: 16px; border-radius: var(--radius); background: rgba(3,26,51,.6); border: 1px solid rgba(0,212,255,.2); box-shadow: var(--shadow); overflow: hidden; }
+    .sec-hd { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-bottom: 1px solid rgba(0,212,255,.12); font-weight: 700; color: var(--c-primary); text-transform: uppercase; letter-spacing: .6px; }
+    .sec-bd { padding: 12px 14px; }
+    .kvs { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); }
+    .kv { background: rgba(0,0,0,.16); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 10px; text-align: center; }
+    .kv-v { font-size: 20px; font-weight: 800; color: var(--c-accent); }
+    .kv-k { font-size: 12px; color: var(--c-text-2); text-transform: uppercase; letter-spacing: .6px; }
+    .list { display: grid; gap: 10px; }
+    .item { display: flex; align-items: center; gap: 10px; padding: 10px; background: rgba(0,0,0,.16); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; }
+    .item a { color: var(--c-text); text-decoration: none; }
+    .item a:active { opacity: .8; }
+    .btns { display: flex; gap: 10px; }
+    .btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; border-radius: 10px; border: 1px solid var(--c-primary); color: var(--c-primary); background: transparent; }
+    .btn--fill { background: linear-gradient(45deg, var(--c-bg-2), rgba(0,212,255,.2)); color: var(--c-text); border-color: rgba(0,212,255,.35); }
+    .muted { color: var(--c-text-2); font-size: 12px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+    .imgcard { background: rgba(0,0,0,.16); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; overflow: hidden; }
+    .imgcard img { width: 100%; height: auto; display: block; }
+    .nav { position: sticky; bottom: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .switch { height: 44px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: rgba(0,0,0,.24); border: 1px solid rgba(255,255,255,.18); color: var(--c-text); }
+  </style>
+  <script>
+    (function () {
+      try {
+        var params = new URLSearchParams(location.search);
+        if (params.get('forceDesktop') === '1') {
+          localStorage.setItem('forceDesktop', '1');
+        }
+        if (params.get('forceMobile') === '1') {
+          localStorage.setItem('forceMobile', '1');
+        }
+      } catch (e) {}
+    })();
+    function backToDesktop() {
+      try { localStorage.setItem('forceDesktop', '1'); localStorage.removeItem('forceMobile'); } catch(e){}
+      var url = 'index.html?forceDesktop=1';
+      location.replace(url);
+    }
+  </script>
+</head>
+<body>
+  <div class="page">
+    <header class="hdr">
+      <div class="logo">EaxCloud</div>
+      <div class="badge">MOBILE</div>
+    </header>
+
+    <section class="sec">
+      <div class="sec-hd">Profile</div>
+      <div class="sec-bd">
+        <div class="list">
+          <div class="item"><span>💻 Programmer</span></div>
+          <div class="item"><span>🔍 Reverse Engineer</span></div>
+          <div class="item"><span>🛡️ Cybersecurity Specialist</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-hd">Stats</div>
+      <div class="sec-bd">
+        <div class="kvs">
+          <div class="kv"><div class="kv-v">1337+</div><div class="kv-k">Commits</div></div>
+          <div class="kv"><div class="kv-v">42</div><div class="kv-k">Streak</div></div>
+          <div class="kv"><div class="kv-v">25+</div><div class="kv-k">Repos</div></div>
+          <div class="kv"><div class="kv-v">156</div><div class="kv-k">PRs</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-hd">Languages</div>
+      <div class="sec-bd">
+        <div class="grid2">
+          <div class="imgcard"><img loading="lazy" decoding="async" alt="GitHub Stats" src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=tokyonight&bg_color=001122&title_color=00D4FF&icon_color=00FF88&text_color=FFFFFF&border_color=0099CC"></div>
+          <div class="imgcard"><img loading="lazy" decoding="async" alt="Top Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_USERNAME&layout=compact&theme=tokyonight&bg_color=001122&title_color=00D4FF&text_color=FFFFFF&border_color=0099CC"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-hd">Contact</div>
+      <div class="sec-bd">
+        <div class="list">
+          <div class="item"><a href="https://github.com/EaxCloud" rel="noopener">GitHub @EaxCloud</a></div>
+          <div class="item"><a href="https://space.bilibili.com/303578252" rel="noopener">Bilibili @EaxCloud</a></div>
+          <div class="item"><a href="mailto:Ax@eaxcloud.net">Ax@eaxcloud.net</a></div>
+        </div>
+        <div class="btns" style="margin-top: 12px;">
+          <button class="btn" onclick="location.href='mailto:Ax@eaxcloud.net'">发邮件</button>
+          <button class="btn btn--fill" onclick="backToDesktop()">查看桌面版</button>
+        </div>
+        <p class="muted" style="margin-top:8px;">如需始终访问桌面版，请在桌面站点选择“查看桌面版”后保留设置。</p>
+      </div>
+    </section>
+
+    <nav class="nav">
+      <button class="switch" onclick="backToDesktop()">切换到桌面版</button>
+      <a class="switch" href="index.html" style="text-decoration:none; align-items:center; display:inline-flex; justify-content:center;">返回主页</a>
+    </nav>
+  </div>
+</body>
+</html>
+

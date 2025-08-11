@@ -3,6 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <script>
+        (function () {
+            try {
+                var params = new URLSearchParams(location.search);
+                var forceDesktop = params.get('forceDesktop') === '1' || localStorage.getItem('forceDesktop') === '1';
+                var forceMobile = params.get('forceMobile') === '1' || localStorage.getItem('forceMobile') === '1';
+                var ua = navigator.userAgent || '';
+                var isMobileUA = /(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini)/i.test(ua);
+                var isSmallScreen = (window.matchMedia && window.matchMedia('(max-width: 768px)').matches);
+                if (!forceDesktop && (forceMobile || isMobileUA || isSmallScreen)) {
+                    var target = 'mobile.html' + (location.search ? location.search : '');
+                    window.location.replace(target);
+                }
+            } catch (e) { /* no-op */ }
+        })();
+    </script>
     <title>EaxCloud · 个人主页</title>
     <meta name="description" content="EaxCloud 的赛博朋克风个人主页：编程、逆向工程与网络安全。包含技能矩阵、项目展示与社交链接。">
     <meta name="theme-color" content="#001122">

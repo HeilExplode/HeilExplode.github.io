@@ -1,8 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>EaxCloud · 个人主页</title>
+    <meta name="description" content="EaxCloud 的赛博朋克风个人主页：编程、逆向工程与网络安全。包含技能矩阵、项目展示与社交链接。">
+    <meta name="theme-color" content="#001122">
+    <meta name="color-scheme" content="dark light">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="EaxCloud · 个人主页">
+    <meta property="og:description" content="编程 / 逆向 / 网络安全。技能矩阵、项目展示与社交链接。">
+    <meta property="og:locale" content="zh_CN">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://github-readme-stats.vercel.app" crossorigin>
+    <link rel="dns-prefetch" href="//github-readme-stats.vercel.app">
+    <link rel="preconnect" href="https://github-readme-streak-stats.herokuapp.com" crossorigin>
+    <link rel="dns-prefetch" href="//github-readme-streak-stats.herokuapp.com">
     <style>
         :root {
             /* 赛博朋克配色方案 */
@@ -41,6 +54,11 @@
             box-sizing: border-box;
         }
         
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
         body {
             font-family: var(--font-mono);
             font-size: var(--font-size-base);
@@ -48,6 +66,20 @@
             background: var(--cyber-bg-gradient);
             line-height: 1.6;
             min-height: 100vh;
+            min-height: 100svh;
+            overflow-x: hidden;
+        }
+
+        /* 媒体元素自适应，避免在移动端撑宽视口 */
+        img, svg, canvas, video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* 容器内文本允许换行，避免长串字符溢出 */
+        .cyber-container {
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
         
         /* 容器样式 */
@@ -118,6 +150,12 @@
                 --font-size-large: 16px;
                 --font-size-xl: 20px;
             }
+
+            /* 移动端允许打字机文本换行，避免横向溢出 */
+            .typewriter-text {
+                white-space: normal;
+                word-break: break-word;
+            }
         }
         
         @media (max-width: 480px) {
@@ -164,6 +202,10 @@
             line-height: 1.2;
             color: var(--cyber-blue-light);
             white-space: pre;
+            display: block;
+            max-width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
             margin: 20px 0;
             text-shadow: 0 0 5px var(--cyber-blue-light);
             animation: cyber-blink 2s infinite;
@@ -360,6 +402,7 @@
         
         .github-stats-img {
             width: 100%;
+            height: auto;
             border-radius: 8px;
             border: 2px solid var(--cyber-blue-secondary);
             transition: all var(--animation-medium) ease;
@@ -1955,7 +1998,7 @@
                     系统状态
                 </div>
                 <div class="stats-content">
-                    <img src="https://github-readme-stats.vercel.app/api?username=heilexplode&show_icons=true&theme=tokyonight&bg_color=001122&title_color=00D4FF&icon_color=00FF88&text_color=FFFFFF&border_color=0099CC" alt="GitHub Stats" class="github-stats-img">
+                    <img loading="lazy" decoding="async" src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=tokyonight&bg_color=001122&title_color=00D4FF&icon_color=00FF88&text_color=FFFFFF&border_color=0099CC" alt="GitHub Stats" class="github-stats-img">
                 </div>
             </div>
             
@@ -1998,7 +2041,7 @@
                     语言技术栈
                 </div>
                 <div class="stats-content">
-                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=heilexplode&layout=compact&theme=tokyonight&bg_color=001122&title_color=00D4FF&text_color=FFFFFF&border_color=0099CC" alt="Top Languages" class="github-stats-img">
+                    <img loading="lazy" decoding="async" src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_USERNAME&layout=compact&theme=tokyonight&bg_color=001122&title_color=00D4FF&text_color=FFFFFF&border_color=0099CC" alt="Top Languages" class="github-stats-img">
                 </div>
             </div>
             
@@ -2011,7 +2054,7 @@
                     贡献图表
                 </div>
                 <div class="stats-content">
-                    <img src="https://github-readme-streak-stats.herokuapp.com/?user=heilexplode&theme=tokyonight&background=001122&border=0099CC&stroke=00D4FF&ring=00FF88&fire=BB00FF&currStreakNum=FFFFFF&sideNums=FFFFFF&currStreakLabel=00D4FF&sideLabels=CCCCCC&dates=CCCCCC" alt="GitHub Streak" class="github-stats-img">
+                    <img loading="lazy" decoding="async" src="https://github-readme-streak-stats.herokuapp.com/?user=YOUR_GITHUB_USERNAME&theme=tokyonight&background=001122&border=0099CC&stroke=00D4FF&ring=00FF88&fire=BB00FF&currStreakNum=FFFFFF&sideNums=FFFFFF&currStreakLabel=00D4FF&sideLabels=CCCCCC&dates=CCCCCC" alt="GitHub Streak" class="github-stats-img">
                 </div>
             </div>
         </div>
@@ -2283,7 +2326,7 @@
                     
                     <div class="terminal-line">
                         <span class="terminal-prompt">></span>
-                        <span class="terminal-output">Email: <span class="email-copy" onclick="copyEmail()" style="color: var(--cyber-neon-green); cursor: pointer; text-decoration: underline;">Ax@eaxcloud.net</span> <span style="color: var(--cyber-text-secondary); font-size: 0.8rem;">(点击复制)</span></span>
+                        <span class="terminal-output">Email: <span class="email-copy" data-email="Ax@eaxcloud.net">Ax@eaxcloud.net</span> <span class="email-hint">(点击复制)</span></span>
                     </div>
                     
                     <div class="terminal-line">
@@ -2397,6 +2440,18 @@
         
         // 为所有GitHub统计图片添加错误处理
         document.addEventListener('DOMContentLoaded', function() {
+            // 绑定邮箱复制事件（替代内联 onclick）
+            document.querySelectorAll('.email-copy').forEach(el => {
+                el.setAttribute('role', 'button');
+                el.setAttribute('tabindex', '0');
+                el.addEventListener('click', () => copyEmail(el.getAttribute('data-email') || 'Ax@eaxcloud.net'));
+                el.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        el.click();
+                    }
+                });
+            });
             const githubImages = document.querySelectorAll('.github-stats-img');
             
             githubImages.forEach(img => {
@@ -2475,19 +2530,19 @@
         }
         
         // Email复制功能
-        function copyEmail() {
-            const email = 'Ax@eaxcloud.net';
+        function copyEmail(email) {
+            const targetEmail = email || 'Ax@eaxcloud.net';
             
             // 使用现代的Clipboard API
             if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(email).then(() => {
+                navigator.clipboard.writeText(targetEmail).then(() => {
                     showCopyNotification('邮箱地址已复制到剪贴板');
                 }).catch(() => {
-                    fallbackCopyEmail(email);
+                    fallbackCopyEmail(targetEmail);
                 });
             } else {
                 // 降级方案
-                fallbackCopyEmail(email);
+                fallbackCopyEmail(targetEmail);
             }
         }
         
@@ -2839,6 +2894,17 @@
         .email-copy:hover {
             color: var(--cyber-blue-primary) !important;
             text-shadow: 0 0 8px var(--cyber-blue-primary);
+        }
+
+        .email-copy {
+            color: var(--cyber-neon-green);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .email-hint {
+            color: var(--cyber-text-secondary);
+            font-size: 0.8rem;
         }
         
         /* 响应式错误处理 */

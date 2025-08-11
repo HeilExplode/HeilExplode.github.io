@@ -197,18 +197,33 @@
         }
         
         .ascii-art {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            line-height: 1.2;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Cascadia Mono', 'DejaVu Sans Mono', 'Noto Sans Mono', 'Liberation Mono', 'Courier New', monospace;
+            font-size: clamp(0.5rem, 2vw, 0.9rem);
+            line-height: 1;
+            letter-spacing: 0;
             color: var(--cyber-blue-light);
             white-space: pre;
             display: block;
             max-width: 100%;
             overflow-x: auto;
+            /* 隐藏滚动条但保留滑动 */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE 10+ / Edge 旧版 */
             -webkit-overflow-scrolling: touch;
             margin: 20px 0;
-            text-shadow: 0 0 5px var(--cyber-blue-light);
-            animation: cyber-blink 2s infinite;
+            text-shadow: none;
+            animation: none;
+            font-kerning: none;
+            font-variant-ligatures: none;
+            font-feature-settings: "liga" 0, "calt" 0;
+        }
+
+        /* WebKit 隐藏滚动条 */
+        .ascii-art::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
+            background: transparent;
         }
         
         .brand-border {
@@ -1096,8 +1111,8 @@
             }
             
             .ascii-art {
-                font-size: 0.65rem;
-                line-height: 1.1;
+                font-size: clamp(0.5rem, 2.2vw, 0.8rem);
+                line-height: 1;
             }
             
             .stats-section {
@@ -1168,7 +1183,7 @@
             }
             
             .ascii-art {
-                font-size: 0.5rem;
+                font-size: clamp(0.48rem, 3vw, 0.7rem);
                 line-height: 1;
                 margin: 15px 0;
             }
@@ -1938,21 +1953,21 @@
         <div class="header-section">
             <div class="brand-border">
                 <div class="brand-logo">EaxCloud</div>
-                <div class="ascii-art">╔════════════════════════════════════════════╗
-║    ███████╗ █████╗ ██╗  ██╗                ║
-║    ██╔════╝██╔══██╗╚██╗██╔╝                ║
-║    █████╗  ███████║ ╚███╔╝                 ║
-║    ██╔══╝  ██╔══██║ ██╔██╗                 ║
-║    ███████╗██║  ██║██╔╝ ██╗                ║
-║    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝                ║
-║                                            ║
-║     ██████╗██╗      ██████╗ ██╗   ██╗██████╗║
-║    ██╔════╝██║     ██╔═══██╗██║   ██║██╔══██╗║
-║    ██║     ██║     ██║   ██║██║   ██║██║  ██║║
-║    ██║     ██║     ██║   ██║██║   ██║██║  ██║║
-║    ╚██████╗███████╗╚██████╔╝╚██████╔╝██████╔╝║
-║     ╚═════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝ ║
-╚════════════════════════════════════════════╝</div>
+                <pre class="ascii-art" aria-label="ASCII banner" role="img">╔════════════════════════════════════════════════╗
+║    ███████╗ █████╗ ██╗  ██╗                    ║
+║    ██╔════╝██╔══██╗╚██╗██╔╝                    ║
+║    █████╗  ███████║ ╚███╔╝                     ║
+║    ██╔══╝  ██╔══██║ ██╔██╗                     ║
+║    ███████╗██║  ██║██╔╝ ██╗                    ║
+║    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝                    ║
+║                                                ║
+║     ██████╗██╗      ██████╗ ██╗   ██╗██████╗   ║
+║    ██╔════╝██║     ██╔═══██╗██║   ██║██╔══██╗  ║
+║    ██║     ██║     ██║   ██║██║   ██║██║  ██║  ║
+║    ██║     ██║     ██║   ██║██║   ██║██║  ██║  ║
+║    ╚██████╗███████╗╚██████╔╝╚██████╔╝██████╔╝  ║
+║     ╚═════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝   ║
+╚════════════════════════════════════════════════╝</pre>
                 <div class="brand-subtitle">
                     <span style="color: var(--cyber-neon-green);">◉</span> SYSTEM ONLINE 
                     <span style="color: var(--cyber-neon-green);">◉</span>
